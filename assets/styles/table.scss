@@ -40,3 +40,9 @@ td:first-child {
 th {
     color: #555;
 }
+
+.image-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

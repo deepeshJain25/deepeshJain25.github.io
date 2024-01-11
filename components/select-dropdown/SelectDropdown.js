@@ -7,13 +7,13 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const SelectDropdown = () => {
+const SelectDropdown = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>Deepesh Jain</DropdownToggle>
+      <DropdownToggle caret>{props.placeholder}</DropdownToggle>
       {/* <DropdownToggle caret>Deepesh Jain <br /><span>Software Developer</span></DropdownToggle> */}
       <DropdownMenu>
         <DropdownItem>Deepesh</DropdownItem>

@@ -1,7 +1,10 @@
 import DataTable from "@/components/data-table/Data-Table";
 import DeductionBox from "@/components/deduction-box/DeductionBox";
+import Header from "@/components/header/Header";
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
+import Sidebar from "@/components/sidebar/Sidebar";
 import Tabs from "@/components/tabs/Tabs";
+import WithAuth from "@/utils/withAuth";
 import React from "react";
 import { Col, Row } from "reactstrap";
 
@@ -74,53 +77,44 @@ const Residence = () => {
   ];
 
   return (
-    <div className="dashboard-main">
-      <h2 className="res-txt">residence</h2>
-      <span className="span1">Residence</span>
-      <span className="arrow">{">"}</span>
-      <span className="span2">Detailed view</span>
+    <>
+      <Sidebar />
+      <Header />
+      <div className="dashboard-main">
+        <h2 className="res-txt">residence</h2>
+        <span className="span1">Residence</span>
+        <span className="arrow">{">"}</span>
+        <span className="span2">Detailed view</span>
 
-      {/* <div className="owner-mgmt">
-        <div>
-          <h2 className="res-txt">residence</h2>
-          <span className="span1">Residence</span>
-          <span className="arrow">{">"}</span>
-          <span className="span2">Detailed view</span>
-        </div>
-        <div className="search-form">
-          <span>Search by :</span>
-          <input type="text" className="form-control" placeholder="Unit" />
-          <input type="text" className="form-control" placeholder="Unit" />
-          <button className="owner-btn">+ CREATE OWNER</button>
-        </div>
-      </div> */}
-
-      <Tabs first={"Deductions"} second={"View Finances"} />
-      <div className="d-flex align-items-center justify-content-between">
-        <div className="d-flex mb-5">
-          <div className="me-4">
-            <SelectDropdown />
+        <Tabs first={"Deductions"} second={"View Finances"} />
+        <div className="d-flex align-items-center justify-content-between">
+          <div className="d-flex mb-5">
+            <div className="me-4">
+              <SelectDropdown placeholder="July" />
+            </div>
+            <div className="me-4">
+              <SelectDropdown placeholder="2023" />
+            </div>
           </div>
-          <div className="me-4">
-            <SelectDropdown />
+          <div className="chat-wrapper">
+            <img src="/images/chat.png" className="img-fluid" alt="" />
+          </div>
+          <div className="search-box-wrapper">
+            <img src="/images/search.png" className="img-fluid" alt="" />
+            <input type="text" className="form-control search-box" />
           </div>
         </div>
-        <input
-          type="text"
-          className="form-control search-box"
-          placeholder="Unit"
-        />
+
+        <Row>
+          <Col md={9} lg={9}>
+            <DataTable data={tableData} headers={headers} />
+          </Col>
+          <Col md={3} lg={3}>
+            <DeductionBox />
+          </Col>
+        </Row>
       </div>
-
-      <Row>
-        <Col md={9} lg={9}>
-          <DataTable data={tableData} headers={headers} />
-        </Col>
-        <Col md={3} lg={3}>
-          <DeductionBox />
-        </Col>
-      </Row>
-    </div>
+    </>
   );
 };
 

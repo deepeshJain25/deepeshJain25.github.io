@@ -14,7 +14,7 @@ const Header = () => {
             </div>
           </div>
           <div className="profile">
-            <SelectDropdown />
+            <SelectDropdown placeholder="Deepesh Jain" />
           </div>
         </div>
       </div>

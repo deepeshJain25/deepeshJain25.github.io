@@ -12,15 +12,24 @@ const DataTable = ({ data, headers }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
-            <tr key={index}>
-              <td>{row.apartmentNumber}</td>
-              <td>{row.utility}</td>
-              <td>{row.serviceCharges}</td>
-              <td>{row.hskp}</td>
-              <td>{row.en}</td>
-            </tr>
-          ))}
+          {data.map((row, index) => {
+            const keys = Object.keys(row);
+            return (
+              <tr key={index}>
+                {keys.map((key, i) => {
+                  if (key == "images") {
+                    return (
+                      <td key={i} className="image-cell">
+                        <img src={row[key][0]} className="img-fluid" alt="" />
+                        <img src={row[key][1]} className="img-fluid" alt="" />
+                      </td>
+                    );
+                  }
+                  return <td key={i}>{row[key]}</td>;
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

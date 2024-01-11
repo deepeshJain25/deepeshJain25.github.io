@@ -1,11 +1,16 @@
 import React, { useRef, useState } from "react";
 import { ValidCreds } from "../../assets/data/login";
+import { useAuth } from "../../utils/authContext";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
   const email = useRef("");
   const pwd = useRef("");
 
-  const [login, setLogin] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(true);
+
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -21,9 +26,13 @@ const Login = () => {
   const handleSubmit = (em, pd) => {
     ValidCreds.forEach((data) => {
       if (data.email === em && data.pwd === pd) {
-        setLogin(true);
+        setLoginStatus(true);
+        login();
+        router.push("/dashboard");
+        return;
       }
     });
+    setLoginStatus(false);
   };
 
   return (
@@ -58,7 +67,7 @@ const Login = () => {
         >
           LOG IN
         </button>
-        {login && <p>Logged In!</p>}
+        {!loginStatus && <p style={{ color: "red" }}>Wrong Creds!</p>}
       </div>
     </section>
   );
