@@ -1,0 +1,102 @@
+.formContainer {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.closeBtn {
+  cursor: pointer;
+  font-size: 24px;
+}
+.formLabel {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+.formInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+.inputGroup2 {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+}
+
+.inputGroup label {
+  flex: 1;
+}
+.inputGroup input {
+  flex: 2;
+}
+.addMonth {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submitBtn {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #7759d2 0%, #367ad0 100%);
+  padding: 13px;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+}
+
+.tabs {
+  width: 60%;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  display: flex;
+  margin-bottom: 20px;
+  .tab {
+    margin-right: 40px;
+    p {
+      font-weight: 500;
+    }
+    &.active {
+      border-bottom: 1px solid black;
+      > p {
+        font-weight: 700;
+      }
+    }
+  }
+}
