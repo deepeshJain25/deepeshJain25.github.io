@@ -20,8 +20,18 @@ const DataTable = ({ data, headers }) => {
                   if (key == "images") {
                     return (
                       <td key={i} className="image-cell">
-                        <img src={row[key][0]} className="img-fluid" alt="" />
-                        <img src={row[key][1]} className="img-fluid" alt="" />
+                        <img
+                          src={row[key][0]}
+                          className="img-fluid"
+                          alt="edit"
+                          style={{ cursor: "pointer" }}
+                        />
+                        <img
+                          src={row[key][1]}
+                          className="img-fluid"
+                          alt="remove owner"
+                          style={{ cursor: "pointer" }}
+                        />
                       </td>
                     );
                   }

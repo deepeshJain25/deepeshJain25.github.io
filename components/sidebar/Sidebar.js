@@ -25,6 +25,7 @@ const Sidebar = () => {
               return (
                 <li
                   className={data.name === selectedTab && "active"}
+                  style={{ cursor: "pointer" }}
                   key={i}
                   onClick={() => handleTab(data.url, data.name)}
                 >
