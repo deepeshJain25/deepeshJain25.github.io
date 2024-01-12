@@ -1,9 +1,5 @@
 import DataTable from "@/components/data-table/Data-Table";
-import Header from "@/components/header/Header";
 import PaginationComponent from "@/components/pagination/Pagination";
-import Pagination from "@/components/pagination/Pagination";
-import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
-import Sidebar from "@/components/sidebar/Sidebar";
 import Tabs from "@/components/tabs/Tabs";
 import WithAuth from "@/utils/withAuth";
 import React, { useEffect, useState } from "react";
