@@ -246,11 +246,19 @@
 
 .pagination-box {
   background-color: #fff;
-  height: 3rem;
-  border-radius: 5px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5rem 2rem;
+
+  .page-info p {
+    margin: 0;
+  }
+  .pagination,
+  .page-info {
+    display: flex;
+    align-items: center;
+  }
 }
