@@ -1,19 +1,21 @@
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
 import DataContext from "@/utils/dataContext";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 const Header = () => {
   const { setHeaderData } = useContext(DataContext);
-
+  const [notifNum, setNotifNum] = useState(2);
   const options = [
-    "Deepesh Jain",
-    "Neha Patel",
-    "Lekhraj Saini",
-    "Atish Chhabria",
+    { name: "Deepesh Jain", notifs: 2 },
+    { name: "Neha Patel", notifs: 3 },
+    { name: "Lekhraj Saini", notifs: 4 },
+    { name: "Atish Chhabria", notifs: 1 },
   ];
 
   const handleChange = (val) => {
+    const data = options.find((option) => option.name === val);
     setHeaderData(val);
+    setNotifNum(data.notifs);
   };
 
   return (
@@ -23,11 +25,14 @@ const Header = () => {
           <div className="noti">
             <img src="/images/bell.png" className="img-fluid icon" alt="" />
             <div className="count">
-              <p>3</p>
+              <p>{notifNum}</p>
             </div>
           </div>
           <div className="profile">
-            <SelectDropdown options={options} handleChange={handleChange} />
+            <SelectDropdown
+              options={options.map((option) => option.name)}
+              handleChange={handleChange}
+            />
           </div>
         </div>
       </div>
