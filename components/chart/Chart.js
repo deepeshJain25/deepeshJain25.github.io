@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -11,101 +11,115 @@ import {
   Legend,
 } from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+export default function MyLineChart(props) {
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    tooltip: {
-      mode: "index",
-      intersect: false,
-      callbacks: {
-        title: function (tooltipItems) {
-          return `Data for ${tooltipItems[0].label}`;
-        },
-        label: function (context) {
-          let label = context.dataset.label || "";
+  function debounce(fn, delay) {
+    let timeoutID = null;
+    return function () {
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+      }
+      timeoutID = setTimeout(() => {
+        fn.apply(this, arguments);
+      }, delay);
+    };
+  }
 
-          if (label) {
-            label += ": ";
+  function handleTooltipHover(data) {
+    props.recordData(data);
+  }
+
+  const debouncedHandleTooltipHover = debounce(handleTooltipHover, 500);
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      tooltip: {
+        mode: "index",
+        intersect: false,
+        external: function (context) {
+          if (context.tooltip.opacity === 0) {
+            debouncedHandleTooltipHover(null);
+          } else {
+            const tooltipItems = context.tooltip.dataPoints;
+            debouncedHandleTooltipHover(tooltipItems);
           }
-          if (context.parsed.y !== null) {
-            label += new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-            }).format(context.parsed.y);
-          }
-          return label;
-        },
-        afterBody: function (tooltipItems) {
-          const dataValue = tooltipItems[0].parsed.y;
-          console.log("The value is:", dataValue);
         },
       },
     },
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
     },
-  },
-  interaction: {
-    mode: "nearest",
-    axis: "x",
-    intersect: false,
-  },
-};
+    interaction: {
+      mode: "nearest",
+      axis: "x",
+      intersect: false,
+    },
+  };
 
-const labels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+  const labels = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "Total Revenue",
-      data: labels.map(() => Math.ceil(Math.random() * 100000)),
-      borderColor: "#3250FF",
-      backgroundColor: "#2BB2FE",
-    },
-    {
-      label: "Deductibles",
-      data: labels.map(() => Math.ceil(Math.random() * 100000)),
-      borderColor: "#F86624",
-      backgroundColor: "#F9C80E",
-    },
-    {
-      label: "Net Revenue",
-      data: labels.map(() => Math.ceil(Math.random() * 100000)),
-      borderColor: "#2BB2FE",
-      backgroundColor: "#22CAAD",
-    },
-  ],
-};
+  const revenueData = useRef(
+    labels.map(() => Math.ceil(Math.random() * 100000))
+  );
 
-export default function MyLineChart() {
+  const deductiblesData = useRef(
+    labels.map(() => Math.ceil(Math.random() * 100000))
+  );
+
+  const netRevData = useRef(
+    labels.map(() => Math.ceil(Math.random() * 100000))
+  );
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Total Revenue",
+        data: revenueData.current,
+        borderColor: "#3250FF",
+        backgroundColor: "#2BB2FE",
+      },
+      {
+        label: "Deductibles",
+        data: deductiblesData.current,
+        borderColor: "#F86624",
+        backgroundColor: "#F9C80E",
+      },
+      {
+        label: "Net Revenue",
+        data: netRevData.current,
+        borderColor: "#2BB2FE",
+        backgroundColor: "#22CAAD",
+      },
+    ],
+  };
   return <Line options={options} data={data} />;
 }
