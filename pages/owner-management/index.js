@@ -26,12 +26,14 @@ const OwnerManagement = () => {
 
   const [tableData, setTableData] = useState([]);
 
+  // to split the data to be shown according to the page number selected
   function paginate(data, currentPage, pageSize) {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize, data.length);
     return data.slice(startIndex, endIndex);
   }
 
+  // calculates the appropriate pagination message accroding the page number selected
   function getPaginationMessage(totalItems, currentPage, pageSize) {
     if (totalItems === 0) {
       return "No items to display";
@@ -43,6 +45,7 @@ const OwnerManagement = () => {
     return `Showing ${startIndex}-${endIndex} of ${totalItems}`;
   }
 
+  // runs on each page num change
   useEffect(() => {
     const data = paginate(ownersData, currentPage, pageSize);
     setTableData(data);

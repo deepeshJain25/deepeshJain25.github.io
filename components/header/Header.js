@@ -3,8 +3,11 @@ import DataContext from "@/utils/dataContext";
 import React, { useContext, useState } from "react";
 
 const Header = () => {
+  // to set dashboard welcome message according to the name selected in the dropdown of the header
   const { setHeaderData } = useContext(DataContext);
+
   const [notifNum, setNotifNum] = useState(2);
+
   const options = [
     { name: "Deepesh Jain", notifs: 2 },
     { name: "Neha Patel", notifs: 3 },
@@ -14,8 +17,8 @@ const Header = () => {
 
   const handleChange = (val) => {
     const data = options.find((option) => option.name === val);
-    setHeaderData(val);
-    setNotifNum(data.notifs);
+    setHeaderData(val); //sets dashboard welcome message
+    setNotifNum(data.notifs); // sets number of notifs of that person
   };
 
   return (

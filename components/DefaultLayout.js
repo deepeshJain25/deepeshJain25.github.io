@@ -11,12 +11,14 @@ const DefaultLayout = ({ children }) => {
 
   return (
     <>
+      {/* making sidebar and header common to every component and conditionally rendering it according to login status */}
       {isLoggedIn && path !== "/" && (
         <>
           <Sidebar />
           <Header />
         </>
       )}
+      {/* this includes all component */}
       {children}
     </>
   );

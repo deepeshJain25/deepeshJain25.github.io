@@ -6,7 +6,9 @@ import { useAuth } from "@/utils/authContext";
 const Sidebar = () => {
   const router = useRouter();
   const [selectedTab, setTab] = useState("Dashboard");
-  const { logout } = useAuth();
+  const { logout } = useAuth(); // to initiate logout
+
+  // to redirect user to respective page
   const handleTab = (url, name) => {
     setTab(name);
     if (url) {

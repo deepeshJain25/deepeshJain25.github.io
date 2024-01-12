@@ -1,8 +1,6 @@
 import DataTable from "@/components/data-table/Data-Table";
 import DeductionBox from "@/components/deduction-box/DeductionBox";
-import Header from "@/components/header/Header";
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
-import Sidebar from "@/components/sidebar/Sidebar";
 import Tabs from "@/components/tabs/Tabs";
 import WithAuth from "@/utils/withAuth";
 import React from "react";
@@ -128,5 +126,4 @@ const Residence = () => {
   );
 };
 
-// export default Residence;
 export default WithAuth(Residence);

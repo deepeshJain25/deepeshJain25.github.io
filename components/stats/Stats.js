@@ -23,6 +23,7 @@ const Stats = () => {
     },
   ];
 
+  // to fetch graph values when mouse hovers over it
   const fetchDataFromGraph = (data) => {
     const values = (data || [])?.map((data) => data.formattedValue);
     setStatValues(values);

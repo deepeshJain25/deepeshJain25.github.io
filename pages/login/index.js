@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 const Login = () => {
   const router = useRouter();
+
+  // used useRef to store email and password data, as using useState re-renders input field on each change of state which is not required
   const email = useRef("");
   const pwd = useRef("");
 
@@ -23,6 +25,7 @@ const Login = () => {
     }
   };
 
+  // checking creds entered with the valid creds
   const handleSubmit = (em, pd) => {
     let loginSuccessful = false;
 
@@ -35,6 +38,7 @@ const Login = () => {
       }
     });
     if (!loginSuccessful) {
+      // if wrong creds are entered then this runs hence showing error message
       setLoginStatus(false);
     }
   };
@@ -73,7 +77,9 @@ const Login = () => {
         </button>
         <br />
       </div>
-      {!loginStatus && <p style={{ color: "red" }}>Wrong Creds!</p>}
+      {!loginStatus && (
+        <p style={{ color: "red" }}>Wrong Credentials. Please try again!</p>
+      )}
     </section>
   );
 };

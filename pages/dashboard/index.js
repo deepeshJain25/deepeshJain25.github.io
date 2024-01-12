@@ -1,9 +1,6 @@
-import Header from "@/components/header/Header";
 import InfoCard from "@/components/info-card/InfoCard";
 import OwnerBookings from "@/components/owner-bookings";
-import UnitCard from "@/components/owner-bookings/UnitCard";
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
-import Sidebar from "@/components/sidebar/Sidebar";
 import Stats from "@/components/stats/Stats";
 import DataContext from "@/utils/dataContext";
 import WithAuth from "@/utils/withAuth";
@@ -106,4 +103,3 @@ const Dashboard = () => {
 };
 
 export default WithAuth(Dashboard);
-// export default Dashboard;
