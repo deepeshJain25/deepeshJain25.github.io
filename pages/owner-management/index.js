@@ -62,4 +62,5 @@ const OwnerManagement = () => {
   );
 };
 
-export default OwnerManagement;
+export default WithAuth(OwnerManagement);
+// export default (OwnerManagement);

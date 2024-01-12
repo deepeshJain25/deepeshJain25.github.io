@@ -88,6 +88,7 @@ const Dashboard = () => {
                       title={data.title}
                       src={data.src}
                       value={data.value}
+                      color={data.color}
                     />
                   </Col>
                 );
@@ -104,4 +105,5 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default WithAuth(Dashboard);
+// export default Dashboard;

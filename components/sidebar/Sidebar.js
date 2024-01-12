@@ -39,7 +39,13 @@ const Sidebar = () => {
             })}
           </ul>
         </div>
-        <div className="logout" onClick={() => logout()}>
+        <div
+          className="logout"
+          onClick={() => {
+            logout();
+            router.push("/");
+          }}
+        >
           <img
             src="/images/logout 1.png"
             className="img-fluid"

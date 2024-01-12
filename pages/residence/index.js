@@ -128,4 +128,5 @@ const Residence = () => {
   );
 };
 
-export default Residence;
+// export default Residence;
+export default WithAuth(Residence);
