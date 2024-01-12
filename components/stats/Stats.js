@@ -1,4 +1,5 @@
 import React from "react";
+import MyLineChart from "../chart/Chart";
 
 const Stats = () => {
   const statsData = [
@@ -38,7 +39,7 @@ const Stats = () => {
         })}
       </div>
       <div className="graph">
-        <h1>graph here</h1>
+        <MyLineChart />
       </div>
     </div>
   );

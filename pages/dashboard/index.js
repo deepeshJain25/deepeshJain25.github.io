@@ -30,6 +30,9 @@ const Dashboard = () => {
       color: "orange",
     },
   ];
+
+  const monOptions = ["September", "October", "November", "December"];
+  const yearOptions = ["2023", "2022", "2021", "2020"];
   return (
     <>
       <div className="dashboard-main">
@@ -43,10 +46,10 @@ const Dashboard = () => {
           <div className="date">
             <div className="d-flex">
               <div className="me-4">
-                <SelectDropdown placeholder="September" />
+                <SelectDropdown options={monOptions} />
               </div>
               <div>
-                <SelectDropdown placeholder="2023" />
+                <SelectDropdown options={yearOptions} />
               </div>
             </div>
           </div>
