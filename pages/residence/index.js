@@ -78,8 +78,6 @@ const Residence = () => {
 
   return (
     <>
-      <Sidebar />
-      <Header />
       <div className="dashboard-main">
         <h2 className="res-txt">residence</h2>
         <span className="span1">Residence</span>

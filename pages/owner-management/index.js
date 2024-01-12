@@ -22,8 +22,6 @@ const OwnerManagement = () => {
 
   return (
     <>
-      <Sidebar />
-      <Header />
       <div className="dashboard-main">
         <div className="owner-mgmt">
           <div>

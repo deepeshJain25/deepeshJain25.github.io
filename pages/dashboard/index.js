@@ -32,8 +32,6 @@ const Dashboard = () => {
   ];
   return (
     <>
-      <Sidebar />
-      <Header />
       <div className="dashboard-main">
         <div className="user-details">
           <div className="username">
