@@ -24,15 +24,19 @@ const Login = () => {
   };
 
   const handleSubmit = (em, pd) => {
+    let loginSuccessful = false;
+
     ValidCreds.forEach((data) => {
       if (data.email === em && data.pwd === pd) {
         setLoginStatus(true);
         login();
+        loginSuccessful = true;
         router.push("/dashboard");
-        return;
       }
     });
-    setLoginStatus(false);
+    if (!loginSuccessful) {
+      setLoginStatus(false);
+    }
   };
 
   return (
@@ -67,8 +71,9 @@ const Login = () => {
         >
           LOG IN
         </button>
-        {!loginStatus && <p style={{ color: "red" }}>Wrong Creds!</p>}
+        <br />
       </div>
+      {!loginStatus && <p style={{ color: "red" }}>Wrong Creds!</p>}
     </section>
   );
 };
