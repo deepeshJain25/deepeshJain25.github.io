@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const SelectDropdown = (props) => {
   const { options } = props;
   return (
-    <div class="custom-select-wrapper">
-      <div class="custom-select">
+    <div className="custom-select-wrapper">
+      <div className="custom-select">
         <select onChange={(e) => props.handleChange(e.target.value)}>
           {(options || [])?.map((data, i) => {
             return (

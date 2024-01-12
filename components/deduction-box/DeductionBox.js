@@ -2,50 +2,50 @@ import React from "react";
 
 const DeductionBox = () => {
   return (
-    <div class="formContainer">
+    <div className="form-container">
       <div>
-        <div class="formHeader">
-          <span class="formTitle">Add Deduction</span>
-          <span class="closeBtn">&times;</span>
+        <div className="form-header">
+          <span className="form-title">Add Deduction</span>
+          <span className="close-btn">&times;</span>
         </div>
-        <label class="formLabel" htmlFor="total-amount">
+        <label className="form-label" htmlFor="total-amount">
           Total Amount
         </label>
-        <div class="inputGroup2">
+        <div className="input-group2">
           <input
             type="text"
             id="total-amount"
-            class="formInput"
+            className="form-input"
             placeholder="AED"
             style={{ flex: 2 }}
           />
           <input
             type="text"
             id="total-amount"
-            class="formInput"
+            className="form-input"
             placeholder="Type Amount here"
             style={{ flex: 3 }}
           />
           <input
             type="text"
             id="percentage"
-            class="formInput"
+            className="form-input"
             placeholder="%"
             style={{ flex: 1 }}
           />
         </div>
-        <label class="formLabel">Split deduction monthly?</label>
-        <div class="inputGroup">
+        <label className="form-label">Split deduction monthly?</label>
+        <div className="input-group">
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <input
               type="text"
-              class="formInput"
+              className="form-input"
               placeholder="September"
               style={{ flex: 2 }}
             />
             <input
               type="text"
-              class="formInput"
+              className="form-input"
               placeholder="2023"
               style={{ flex: 1 }}
             />
@@ -54,31 +54,31 @@ const DeductionBox = () => {
             <input
               type="text"
               id="percentage"
-              class="formInput"
+              className="form-input"
               placeholder="AED"
               style={{ flex: 1 }}
             />
             <input
               type="text"
               id="total-amount"
-              class="formInput"
+              className="form-input"
               placeholder="25"
               style={{ flex: 3 }}
             />
             <input
               type="text"
               id="percentage"
-              class="formInput"
+              className="form-input"
               placeholder="%"
               style={{ flex: 1 }}
             />
           </div>
         </div>
         <div className="text-end">
-          <a class="add-mon">+ ADD MONTH</a>
+          <a className="add-mon">+ ADD MONTH</a>
         </div>
       </div>
-      <button class="submitBtn">ADD DEDUCTION</button>
+      <button className="submit-btn">ADD DEDUCTION</button>
     </div>
   );
 };

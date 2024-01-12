@@ -34,12 +34,14 @@ const Stats = () => {
       <h4 style={{ fontWeight: 700, fontSize: "20px" }}>STATS</h4>
       <p style={{ fontWeight: 500, fontSize: "14px" }}>
         Income and Expenses :{" "}
-        {statMonth?.length !== 0 ? `${statMonth}` : `No Month Selected`}
+        {statMonth?.length !== 0
+          ? `${statMonth}`
+          : `No Month Selected(Hover over the graph)`}
       </p>
       <div className="stats-wrapper mb-5">
         {cardData.map((data, i) => {
           return (
-            <div className="stats-num">
+            <div className="stats-num" key={i}>
               <div>
                 <img src={data.src} className="img-fluid" alt={data.title} />
               </div>
