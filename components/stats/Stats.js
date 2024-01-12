@@ -3,6 +3,7 @@ import MyLineChart from "../chart/Chart";
 
 const Stats = () => {
   const [statValues, setStatValues] = useState([0, 0, 0]);
+  const [statMonth, setStatMonth] = useState("");
 
   const cardData = [
     {
@@ -25,12 +26,16 @@ const Stats = () => {
   const fetchDataFromGraph = (data) => {
     const values = (data || [])?.map((data) => data.formattedValue);
     setStatValues(values);
+    setStatMonth((data || [])[0]?.label);
   };
 
   return (
     <div className="stats">
       <h4 style={{ fontWeight: 700, fontSize: "20px" }}>STATS</h4>
-      <p style={{ fontWeight: 500, fontSize: "14px" }}>Income and Expenses</p>
+      <p style={{ fontWeight: 500, fontSize: "14px" }}>
+        Income and Expenses :{" "}
+        {statMonth?.length !== 0 ? `${statMonth}` : `No Month Selected`}
+      </p>
       <div className="stats-wrapper mb-5">
         {cardData.map((data, i) => {
           return (
