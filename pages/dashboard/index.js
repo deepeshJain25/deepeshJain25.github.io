@@ -5,8 +5,9 @@ import UnitCard from "@/components/owner-bookings/UnitCard";
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Stats from "@/components/stats/Stats";
+import DataContext from "@/utils/dataContext";
 import WithAuth from "@/utils/withAuth";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Col, Row } from "reactstrap";
 
 const Dashboard = () => {
@@ -33,23 +34,46 @@ const Dashboard = () => {
 
   const monOptions = ["September", "October", "November", "December"];
   const yearOptions = ["2023", "2022", "2021", "2020"];
+
+  const [selectedMonth, setSelectedMonth] = useState(monOptions[0]);
+  const [selectedYear, setSelectedYear] = useState(yearOptions[0]);
+
+  const { headerData } = useContext(DataContext);
+
+  const handleMonth = (val) => {
+    setSelectedMonth(val);
+  };
+
+  const handleYear = (val) => {
+    setSelectedYear(val);
+  };
+
   return (
     <>
       <div className="dashboard-main">
         <div className="user-details">
           <div className="username">
             <h1>
-              welcome back <span>Deepesh Jain!</span>
+              welcome back <span>{headerData}!</span>
             </h1>
-            <p>The data shown below is for the month of September!</p>
+            <p>
+              The data shown below is for the month of {selectedMonth}{" "}
+              {selectedYear}!
+            </p>
           </div>
           <div className="date">
             <div className="d-flex">
               <div className="me-4">
-                <SelectDropdown options={monOptions} />
+                <SelectDropdown
+                  options={monOptions}
+                  handleChange={handleMonth}
+                />
               </div>
               <div>
-                <SelectDropdown options={yearOptions} />
+                <SelectDropdown
+                  options={yearOptions}
+                  handleChange={handleYear}
+                />
               </div>
             </div>
           </div>

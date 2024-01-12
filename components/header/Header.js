@@ -1,13 +1,21 @@
 import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
-import React, { useState } from "react";
+import DataContext from "@/utils/dataContext";
+import React, { useContext } from "react";
 
 const Header = () => {
+  const { setHeaderData } = useContext(DataContext);
+
   const options = [
     "Deepesh Jain",
     "Neha Patel",
     "Lekhraj Saini",
     "Atish Chhabria",
   ];
+
+  const handleChange = (val) => {
+    setHeaderData(val);
+  };
+
   return (
     <header className="header-main">
       <div className="header">
@@ -19,7 +27,7 @@ const Header = () => {
             </div>
           </div>
           <div className="profile">
-            <SelectDropdown placeholder="Deepesh Jain" options={options} />
+            <SelectDropdown options={options} handleChange={handleChange} />
           </div>
         </div>
       </div>

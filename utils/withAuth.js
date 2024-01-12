@@ -9,7 +9,6 @@ const WithAuth = (ProtectedPage) => {
     const { isLoggedIn } = useAuth();
 
     useEffect(() => {
-      console.log("with auth wrapper ran");
       if (isLoggedIn) {
         setIsAuthenticated(true);
       } else {
