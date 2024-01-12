@@ -50,19 +50,15 @@
         justify-content: center;
         align-items: center;
         border-radius: 100px;
-        background: linear-gradient(180deg, #3250ff 0%, #2bb2fe 100%);
-      }
-
-      .icon-box.blue {
-        background: linear-gradient(180deg, #3250ff 0%, #2bb2fe 100%);
-      }
-
-      .icon-box.orange {
-        background: linear-gradient(180deg, #ff9a3b 0%, #ff6e4e 100%);
-      }
-
-      .icon-box.green {
-        background: linear-gradient(180deg, #00b09b 0%, #96c93d 100%);
+        &.blue {
+          background: linear-gradient(180deg, #3250ff 0%, #2bb2fe 100%);
+        }
+        &.orange {
+          background: linear-gradient(180deg, #ff9a3b 0%, #ff6e4e 100%);
+        }
+        &.green {
+          background: linear-gradient(180deg, #00b09b 0%, #96c93d 100%);
+        }
       }
     }
   }
