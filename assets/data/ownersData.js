@@ -20,7 +20,23 @@ export const ownersData = [
     last: "Username",
     email: "username@gmail.com",
     mobile: "+91 9780545772",
-    units: ["30506 (FPJ)", "50607 (FJB)"],
+    units: ["30506 (FPJ)"],
+    images: ["/images/pencil.png", "/images/block-user.png"],
+  },
+  {
+    first: "Username",
+    last: "Username",
+    email: "username@gmail.com",
+    mobile: "+91 9780545772",
+    units: ["50607 (FJB)"],
+    images: ["/images/pencil.png", "/images/block-user.png"],
+  },
+  {
+    first: "Username",
+    last: "Username",
+    email: "username@gmail.com",
+    mobile: "+91 9780545772",
+    units: ["30506 (FPJ)"],
     images: ["/images/pencil.png", "/images/block-user.png"],
   },
   {
@@ -44,7 +60,7 @@ export const ownersData = [
     last: "Username",
     email: "username@gmail.com",
     mobile: "+91 9780545772",
-    units: ["30506 (FPJ)", "50607 (FJB)"],
+    units: ["50607 (FJB)"],
     images: ["/images/pencil.png", "/images/block-user.png"],
   },
   {

@@ -6,7 +6,7 @@ import SelectDropdown from "@/components/select-dropdown/SelectDropdown";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Tabs from "@/components/tabs/Tabs";
 import WithAuth from "@/utils/withAuth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "reactstrap";
 import { ownersData } from "../../assets/data/ownersData";
 
@@ -19,6 +19,38 @@ const OwnerManagement = () => {
     "Unit(s)",
     "Action",
   ];
+
+  const itemsCount = ownersData.length;
+  const pageSize = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [tableData, setTableData] = useState([]);
+
+  function paginate(data, currentPage, pageSize) {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = Math.min(startIndex + pageSize, data.length);
+    return data.slice(startIndex, endIndex);
+  }
+
+  function getPaginationMessage(totalItems, currentPage, pageSize) {
+    if (totalItems === 0) {
+      return "No items to display";
+    }
+
+    const startIndex = (currentPage - 1) * pageSize + 1;
+    const endIndex = Math.min(startIndex + pageSize - 1, totalItems);
+
+    return `Showing ${startIndex}-${endIndex} of ${totalItems}`;
+  }
+
+  useEffect(() => {
+    const data = paginate(ownersData, currentPage, pageSize);
+    setTableData(data);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
@@ -41,7 +73,7 @@ const OwnerManagement = () => {
         <Tabs first={"Owner"} second={"Owner booking"} />
         <Row>
           <Col md={12} lg={12}>
-            <DataTable data={ownersData} headers={headers} />
+            <DataTable data={tableData} headers={headers} />
           </Col>
         </Row>
         <br />
@@ -49,10 +81,15 @@ const OwnerManagement = () => {
           <Col md={12} lg={12}>
             <div className="pagination-box">
               <div className="page-info">
-                <p>Showing 1-10 of 100</p>
+                <p>{getPaginationMessage(itemsCount, currentPage, pageSize)}</p>
               </div>
               <div className="pagination">
-                <PaginationComponent />
+                <PaginationComponent
+                  itemsCount={itemsCount}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
               </div>
             </div>
           </Col>
@@ -63,4 +100,4 @@ const OwnerManagement = () => {
 };
 
 export default WithAuth(OwnerManagement);
-// export default (OwnerManagement);
+// export default OwnerManagement;
